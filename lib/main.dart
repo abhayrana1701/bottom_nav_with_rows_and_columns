@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
 import 'selfBottomNav.dart';
 
 void main() {

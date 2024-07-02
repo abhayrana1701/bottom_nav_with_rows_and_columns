@@ -17,19 +17,26 @@ class _SelfBottomNavState extends State<SelfBottomNav> {
       appBar: AppBar(
         title: const Text("Self Made Bottom Nav Bar"),
         backgroundColor: Colors.green,
+        elevation: 0,
       ),
-      body: Center(child: currentIndex==0 ? (Text("Home")) : currentIndex==1 ? (Text("Search")) : (Text("Profile")),),
-      bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(child: BottomNavItem(icon: Icons.home, text: "Home",index: 0)),
-                Expanded(child: BottomNavItem(icon: Icons.search, text: "Search",index: 1)),
-                Expanded(child: BottomNavItem(icon: Icons.account_circle_outlined, text: "Profile",index: 2)),
-              ],
-            ),
+      body: Column(
+        children: [
+          Expanded(
+              child: Container(
+                color: currentIndex==0 ? Colors.red : currentIndex==1 ? Colors.greenAccent : Colors.yellow,
+                child: Center(child: currentIndex==0 ? (Text("Home")) : currentIndex==1 ? (Text("Search")) : (Text("Profile")),),
+              )
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(child: BottomNavItem(icon: Icons.home, text: "Home",index: 0)),
+              Expanded(child: BottomNavItem(icon: Icons.search, text: "Search",index: 1)),
+              Expanded(child: BottomNavItem(icon: Icons.account_circle_outlined, text: "Profile",index: 2)),
+            ],
+          ),
+        ],
+      ),
     );
   }
   Widget BottomNavItem({required IconData icon, required String text, required int index}){
@@ -46,7 +53,7 @@ class _SelfBottomNavState extends State<SelfBottomNav> {
           child: Column(
             children: [
               Icon(icon,color: index==currentIndex ? Colors.white : Colors.black),
-              Text(text,style: TextStyle(color: index==currentIndex ? Colors.white : Colors.black)),
+              Text(text,style: TextStyle(color: index==currentIndex ? Colors.white : Colors.black,)),
             ],
           ),
         ),
